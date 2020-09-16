@@ -41,12 +41,12 @@ dino_data %>%
 
 ### Exercise 3
 
-The correlation coefficient for the "star_data" is: -0.0630. This is roughly a .0015 difference from the dino_data correlation coefficient.
+The correlation coefficient for the "star_data" is: -0.0630. This is roughly a .0015 difference from the "dino_data" correlation coefficient.
 
 
 ```{r plot-star}
-star_data <- dinosaurus_dozen %>%
-+     filter(dataset == "star")
+star_data <- datasaurus_dozen %>%
+  filter(dataset == "star")
 
 ```
 ggplot(data = star_data, mapping = aes(x = x, y = y)) +
@@ -54,24 +54,39 @@ ggplot(data = star_data, mapping = aes(x = x, y = y)) +
 
 ```{r cor-star}
 star_data %>%
-+     summarize(r = cor(x,y))
+  summarize(r = cor(x,y))
 
 ```
 
 ### Exercise 4
 
-(Add code and narrative as needed. Note that two R chunks are given but they are not labeled. Use the convention from above to name them appropriately.)
+#The correlation coefficient for the "circle_data" is: -0.0683. This is roughly a .0038 difference from the "dino_data" correlation coefficient.
 
-```{r}
-
+```{r plot-circle}
+circle_data <- datasaurus_dozen %>%
+     filter(dataset == "circle")
 
 ```
-
-```{r}
-
+ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
+   geom_point()
+   
+```{r cor-circle}
+circle_data %>%
+  summarize(r = cor(x,y))
 
 ```
 
 ### Exercise 5
 
 (Add code and narrative as needed. To add R chunks either type out the backticks, curly braces, and the letter `r` or use the Insert chunk button above, with the green +C.)
+```{r summary cor}
+ggplot(datasaurus_dozen,aes(x = x, y = y, color = dataset))+
+  geom_point()+
+  facet_wrap(~ dataset, ncol = 3) + # facet the dataset variable, in 3 cols
+  theme(legend.position = "none")
+
+```{r group summary}
+datasaurus_dozen %>%
+  group_by(dataset) %>%
+  summarize(r =cor(x, y)) %>%
+  print(13)
