@@ -87,7 +87,6 @@ circle_data %>%
 ### Exercise 5
 The summarized plots of all datasets in the datasauRus package:
 
-
 ```{r plot-summary}
 ggplot(datasaurus_dozen,aes(x = x, y = y, color = dataset))+
   geom_point()+
