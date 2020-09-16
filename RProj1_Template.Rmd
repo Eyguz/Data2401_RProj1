@@ -2,7 +2,12 @@
 title: "R Project 1 - Hello R"
 author: "Eduardo Guzman"
 date: "9/16/2020"
-output: html_document
+output: 
+  html_document: 
+    highlight: tango
+    theme: cosmo
+    fig_width: 8
+    fig_height: 8
 ---
 
 MAKE SURE YOU READ AND FOLLOW **ALL** INSTRUCTIONS ON THE INSTRUCTION DOCUMENT. 
@@ -47,10 +52,8 @@ The correlation coefficient for the "star_data" is: -0.0630. This is roughly a .
 ```{r plot-star}
 star_data <- datasaurus_dozen %>%
   filter(dataset == "star")
-
-```
 ggplot(data = star_data, mapping = aes(x = x, y = y)) +
-+     geom_point()
+    geom_point()
 
 ```{r cor-star}
 star_data %>%
@@ -60,13 +63,11 @@ star_data %>%
 
 ### Exercise 4
 
-#The correlation coefficient for the "circle_data" is: -0.0683. This is roughly a .0038 difference from the "dino_data" correlation coefficient.
+The correlation coefficient for the "circle_data" is: -0.0683. This is roughly a .0038 difference from the "dino_data" correlation coefficient.
 
 ```{r plot-circle}
 circle_data <- datasaurus_dozen %>%
      filter(dataset == "circle")
-
-```
 ggplot(data = circle_data, mapping = aes(x = x, y = y)) +
    geom_point()
    
@@ -78,7 +79,6 @@ circle_data %>%
 
 ### Exercise 5
 
-(Add code and narrative as needed. To add R chunks either type out the backticks, curly braces, and the letter `r` or use the Insert chunk button above, with the green +C.)
 ```{r summary cor}
 ggplot(datasaurus_dozen,aes(x = x, y = y, color = dataset))+
   geom_point()+
